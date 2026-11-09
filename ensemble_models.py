@@ -1,6 +1,14 @@
 """Эксперимент с ансамблем или полносвязной нейронной сетью."""
 from __future__ import annotations
 
+import os
+import sys
+import glob
+for p in glob.glob('/content/**/grader_contracts', recursive=True):
+    parent_dir = os.path.dirname(p)
+    if parent_dir not in sys.path:
+        sys.path.insert(0, parent_dir)
+
 from grader_contracts.ensembles import EnsembleInput, EnsembleResult
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier, HistGradientBoostingClassifier, VotingClassifier
